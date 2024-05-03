@@ -5,11 +5,6 @@
 
 #define PLAYER_SPEED 100
 
-typedef struct Player {
-    Vector2 position;
-    Vector2 speed;
-} Player;
-
 Player player;
 
 void Player_init() {
@@ -21,11 +16,24 @@ void Player_init() {
 }
 
 void Player_update(float deltaTime) {
-    if (IsKeyDown(KEY_LEFT)) player.position.x -= PLAYER_SPEED * deltaTime;
-    if (IsKeyDown(KEY_RIGHT)) player.position.x += PLAYER_SPEED * deltaTime;
+    if (IsKeyDown(KEY_LEFT)) {
+        player.position.x -= PLAYER_SPEED * deltaTime;
+        player.orientation = 3;
+    }
+    if (IsKeyDown(KEY_RIGHT)) {
+        player.position.x += PLAYER_SPEED * deltaTime;
 
-    if (IsKeyDown(KEY_UP)) player.position.y -= PLAYER_SPEED * deltaTime;
-    if (IsKeyDown(KEY_DOWN)) player.position.y += PLAYER_SPEED * deltaTime;
+        player.orientation = 1;
+    }
+
+    if (IsKeyDown(KEY_UP)) {
+        player.position.y -= PLAYER_SPEED * deltaTime;
+        player.orientation = 2;
+    }
+    if (IsKeyDown(KEY_DOWN)) {
+        player.position.y += PLAYER_SPEED * deltaTime;
+        player.orientation = 0;
+    }
 }
 
 void Player_render() {

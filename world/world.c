@@ -11,6 +11,7 @@
 #define WORLD_SIZE_VER 64
 
 TerrainData terrainData;
+CreatureData creatureData;
 
 void loadTerrainData() {
     FILE *map;
@@ -41,6 +42,16 @@ void loadTerrainData() {
     fclose(map);
 }
 
+void exampleAI(Creature *this, float deltaTime) {
+    this->position.x += 5*deltaTime;
+}
+
 void World_init() {
     loadTerrainData();
+
+    creatureData[0].type = 0;
+    creatureData[0].position = (Vector2){0};
+}
+
+void World_update(float deltaTime) {
 }

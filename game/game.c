@@ -52,6 +52,8 @@ void Game_run() {
         float deltaTime = GetFrameTime();
 
         Player_update(deltaTime);
+        World_update(deltaTime);
+        Camera_update();
 
         ClearBackground(BLACK);
         BeginDrawing();
